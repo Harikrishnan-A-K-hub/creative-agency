@@ -22,6 +22,8 @@ export default function RootLayout({
         />
       </head>
       <body>
+        {/* Animated Background */}
+        <div className="animated-bg"></div>
         <Header />
         <main>{children}</main>
         <Footer />

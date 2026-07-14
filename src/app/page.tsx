@@ -26,7 +26,7 @@ const testimonials = [
 
 export default function Home() {
   return (
-    <div className="animated-bg">
+    <div>
       {/* Hero */}
       <section className="flex items-center relative overflow-hidden" style={{ minHeight: '100vh' }}>
         <div className="container-custom" style={{ padding: '128px 24px' }}>
