@@ -3,44 +3,44 @@ import Contact from '@/components/sections/Contact';
 import Link from 'next/link';
 
 // This would normally come from a CMS or database
-const getPortfolioItem = (slug: string) => {
-  const items: Record<string, any> = {
-    'techcorp-brand-refresh': {
-      title: 'Brand Refresh for TechCorp',
-      description: 'A complete brand overhaul for a leading technology company, modernizing their visual identity while maintaining brand recognition.',
-      services: ['Branding', 'Web Design'],
-      year: '2024',
-      client: 'TechCorp',
-      challenge: 'TechCorp needed to modernize their brand to appeal to a younger demographic while maintaining trust with existing enterprise clients.',
-      solution: 'We developed a refined visual system that balances innovation with reliability, using a monochrome palette with strategic color accents.',
-      results: [
-        '40% increase in brand recognition',
-        '25% growth in younger demographic',
-        'Consistent brand experience across all touchpoints',
-      ],
-    },
-    'ecommerce-platform': {
-      title: 'E-commerce Platform Design',
-      description: 'A custom e-commerce experience designed to maximize conversions while reflecting the brand\'s premium positioning.',
-      services: ['Web Design', 'Graphic Design'],
-      year: '2024',
-      client: 'RetailCo',
-      challenge: 'The existing platform had high cart abandonment rates and didn\'t reflect the brand\'s premium positioning.',
-      solution: 'We redesigned the entire purchase flow with a focus on clarity, trust signals, and seamless checkout experience.',
-      results: [
-        '35% reduction in cart abandonment',
-        '28% increase in average order value',
-        '95% customer satisfaction score',
-      ],
-    },
-  };
-  
-  return items[slug] || items['techcorp-brand-refresh'];
+const portfolioItems = {
+  'techcorp-brand-refresh': {
+    title: 'Brand Refresh for TechCorp',
+    description: 'A complete brand overhaul for a leading technology company, modernizing their visual identity while maintaining brand recognition.',
+    services: ['Branding', 'Web Design'],
+    year: '2024',
+    client: 'TechCorp',
+    challenge: 'TechCorp needed to modernize their brand to appeal to a younger demographic while maintaining trust with existing enterprise clients.',
+    solution: 'We developed a refined visual system that balances innovation with reliability, using a monochrome palette with strategic color accents.',
+    results: [
+      '40% increase in brand recognition',
+      '25% growth in younger demographic',
+      'Consistent brand experience across all touchpoints',
+    ],
+  },
+  'ecommerce-platform': {
+    title: 'E-commerce Platform Design',
+    description: 'A custom e-commerce experience designed to maximize conversions while reflecting the brand\'s premium positioning.',
+    services: ['Web Design', 'Graphic Design'],
+    year: '2024',
+    client: 'RetailCo',
+    challenge: 'The existing platform had high cart abandonment rates and didn\'t reflect the brand\'s premium positioning.',
+    solution: 'We redesigned the entire purchase flow with a focus on clarity, trust signals, and seamless checkout experience.',
+    results: [
+      '35% reduction in cart abandonment',
+      '28% increase in average order value',
+      '95% customer satisfaction score',
+    ],
+  },
 };
+
+export function generateStaticParams() {
+  return Object.keys(portfolioItems).map((slug) => ({ slug }));
+}
 
 export default async function PortfolioDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const item = getPortfolioItem(slug);
+  const item = portfolioItems[slug as keyof typeof portfolioItems] || portfolioItems['techcorp-brand-refresh'];
 
   return (
     <>
