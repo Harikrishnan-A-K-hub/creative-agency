@@ -4,7 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'Nexus Creative Agency | Digital Design & Branding',
+  title: 'MW Creative Agency | Digital Design & Branding',
   description: 'A boutique creative agency specializing in brand identity, web design, and digital strategy.',
 };
 

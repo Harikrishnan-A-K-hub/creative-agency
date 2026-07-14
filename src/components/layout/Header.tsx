@@ -25,22 +25,87 @@ export default function Header() {
       transition: 'all 0.3s ease',
       background: scrolled ? 'rgba(15, 15, 26, 0.95)' : 'transparent',
       backdropFilter: scrolled ? 'blur(20px)' : 'none',
-      padding: scrolled ? '16px 0' : '24px 0',
+      padding: scrolled ? '12px 0' : '20px 0',
     }}>
       <div className="container-custom">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Link href="/" style={{ fontSize: '1.5rem', fontWeight: '700' }}>
-            <span className="gradient-text">Nexus</span>
+          {/* MW Logo */}
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <span style={{ 
+              fontSize: '2rem', 
+              fontWeight: '800', 
+              color: 'white',
+              letterSpacing: '-0.02em'
+            }}>MW</span>
+            <span style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background: 'var(--primary)',
+              display: 'inline-block'
+            }}></span>
           </Link>
 
+          {/* Desktop Navigation */}
           <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-            <Link href="/about" style={{ fontSize: '14px', fontWeight: '500', color: '#A8B2D1' }}>About</Link>
-            <Link href="/services" style={{ fontSize: '14px', fontWeight: '500', color: '#A8B2D1' }}>Services</Link>
-            <Link href="/portfolio" style={{ fontSize: '14px', fontWeight: '500', color: '#A8B2D1' }}>Work</Link>
-            <Link href="/blog" style={{ fontSize: '14px', fontWeight: '500', color: '#A8B2D1' }}>Journal</Link>
+            <Link href="/about" className="nav-link">About</Link>
+            <Link href="/services" className="nav-link">Services</Link>
+            <Link href="/portfolio" className="nav-link">Work</Link>
+            <Link href="/blog" className="nav-link">Journal</Link>
             <Link href="/contact" className="btn btn-filled" style={{ padding: '10px 24px', fontSize: '12px' }}>Let&apos;s Talk</Link>
           </nav>
+
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            style={{
+              display: 'none',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '8px',
+            }}
+            className="mobile-menu-btn"
+            aria-label="Toggle menu"
+          >
+            <div style={{ 
+              width: '24px', 
+              height: '2px', 
+              background: 'white', 
+              marginBottom: '6px',
+              transition: 'all 0.3s',
+              transform: isMenuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none',
+            }}></div>
+            <div style={{ 
+              width: '24px', 
+              height: '2px', 
+              background: 'white', 
+              marginBottom: '6px',
+              opacity: isMenuOpen ? 0 : 1,
+              transition: 'all 0.3s',
+            }}></div>
+            <div style={{ 
+              width: '24px', 
+              height: '2px', 
+              background: 'white',
+              transition: 'all 0.3s',
+              transform: isMenuOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none',
+            }}></div>
+          </button>
         </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="mobile-nav">
+            <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+            <Link href="/services" onClick={() => setIsMenuOpen(false)}>Services</Link>
+            <Link href="/portfolio" onClick={() => setIsMenuOpen(false)}>Work</Link>
+            <Link href="/blog" onClick={() => setIsMenuOpen(false)}>Journal</Link>
+            <Link href="/contact" className="btn btn-filled" style={{ marginTop: '16px', textAlign: 'center' }} onClick={() => setIsMenuOpen(false)}>
+              Let&apos;s Talk
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );

@@ -6,8 +6,9 @@ export default function Footer() {
       <div className="container-custom">
         <div className="footer-grid">
           <div>
-            <Link href="/" style={{ fontSize: '1.5rem', fontWeight: '700', display: 'inline-block', marginBottom: '16px' }}>
-              <span className="gradient-text">Nexus</span>
+            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '16px' }}>
+              <span style={{ fontSize: '2rem', fontWeight: '800', color: 'white', letterSpacing: '-0.02em' }}>MW</span>
+              <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)', display: 'inline-block' }}></span>
             </Link>
             <p className="text-gray-400" style={{ maxWidth: '300px' }}>
               A boutique creative agency specializing in brand identity, web design, and digital strategy for ambitious brands.
@@ -32,7 +33,7 @@ export default function Footer() {
             <h4 style={{ color: 'white', fontWeight: '600', marginBottom: '24px' }}>Get in Touch</h4>
             <ul style={{ listStyle: 'none', padding: 0 }}>
               <li style={{ marginBottom: '12px' }}>
-                <a href="mailto:hello@nexus.agency" className="text-gray-400" style={{ fontSize: '14px' }}>hello@nexus.agency</a>
+                <a href="mailto:hello@mw.agency" className="text-gray-400" style={{ fontSize: '14px' }}>hello@mw.agency</a>
               </li>
               <li style={{ marginBottom: '12px' }}>
                 <a href="tel:+1234567890" className="text-gray-400" style={{ fontSize: '14px' }}>+1 (234) 567-890</a>
@@ -44,7 +45,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p className="text-gray-500" style={{ fontSize: '14px' }}>© 2026 Nexus Creative Agency. All rights reserved.</p>
+          <p className="text-gray-500" style={{ fontSize: '14px' }}>© 2026 MW Creative Agency. All rights reserved.</p>
           <div style={{ display: 'flex', gap: '24px', fontSize: '14px' }}>
             <a href="#" className="text-gray-500">Privacy</a>
             <a href="#" className="text-gray-500">Terms</a>
