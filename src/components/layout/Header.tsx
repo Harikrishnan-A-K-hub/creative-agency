@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [logoClicks, setLogoClicks] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +17,32 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (logoClicks >= 5) {
+      router.push('/admin/login');
+      setLogoClicks(0);
+    }
+    
+    // Reset clicks after 3 seconds of inactivity
+    const timer = setTimeout(() => {
+      setLogoClicks(0);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [logoClicks, router]);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setLogoClicks(prev => prev + 1);
+    
+    // Only navigate to home if not reaching 5 clicks
+    if (logoClicks < 4) {
+      // Don't navigate, just count
+    } else {
+      // 5th click - will navigate via useEffect
+    }
+  };
 
   return (
     <header style={{
@@ -29,22 +58,35 @@ export default function Header() {
     }}>
       <div className="container-custom">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          {/* MW Logo */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          {/* MW Logo - Click 5 times for admin */}
+          <a 
+            href="/"
+            onClick={handleLogoClick}
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '4px',
+              cursor: 'pointer',
+              userSelect: 'none',
+            }}
+            title={logoClicks > 0 && logoClicks < 5 ? `${5 - logoClicks} more clicks...` : ''}
+          >
             <span style={{ 
               fontSize: '2rem', 
               fontWeight: '800', 
               color: 'white',
-              letterSpacing: '-0.02em'
+              letterSpacing: '-0.02em',
+              transition: 'color 0.2s',
             }}>MW</span>
             <span style={{
               width: '8px',
               height: '8px',
               borderRadius: '50%',
-              background: 'var(--primary)',
-              display: 'inline-block'
+              background: logoClicks > 0 ? '#FF6584' : 'var(--primary)',
+              display: 'inline-block',
+              transition: 'background 0.2s',
             }}></span>
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
