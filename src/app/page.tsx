@@ -28,8 +28,15 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="flex items-center relative overflow-hidden" style={{ minHeight: '100vh' }}>
-        <div className="container-custom" style={{ padding: '128px 24px' }}>
+      <section style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        position: 'relative', 
+        overflow: 'hidden',
+        paddingTop: '100px',
+      }}>
+        <div className="container-custom" style={{ padding: '0 24px' }}>
           <div style={{ maxWidth: '800px' }}>
             <span className="text-small" style={{ display: 'block', marginBottom: '24px' }}>CREATIVE DIGITAL AGENCY</span>
             <h1 className="text-display" style={{ marginBottom: '32px' }}>
@@ -38,7 +45,7 @@ export default function Home() {
             <p className="text-body" style={{ fontSize: '1.25rem', marginBottom: '48px', maxWidth: '600px' }}>
               A boutique agency specializing in brand identity, web design, and digital strategy. We help ambitious brands stand out in the digital landscape.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
               <Link href="/portfolio" className="btn btn-filled">View Our Work</Link>
               <Link href="/contact" className="btn btn-outlined">Start a Project</Link>
             </div>
@@ -56,9 +63,9 @@ export default function Home() {
               { number: '12', label: 'Awards Won' },
               { number: '8+', label: 'Years Experience' },
             ].map((stat, i) => (
-              <div key={i} className="text-center">
+              <div key={i} style={{ textAlign: 'center' }}>
                 <div className="stat-number">{stat.number}</div>
-                <div className="text-gray-400 text-sm">{stat.label}</div>
+                <div style={{ color: '#9CA3AF', fontSize: '14px' }}>{stat.label}</div>
               </div>
             ))}
           </div>
@@ -66,9 +73,9 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section className="section">
+      <section style={{ padding: '100px 0' }}>
         <div className="container-custom">
-          <div className="text-center" style={{ marginBottom: '64px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '64px' }}>
             <span className="text-small" style={{ display: 'block', marginBottom: '16px' }}>WHAT WE DO</span>
             <h2 className="text-heading" style={{ marginBottom: '24px' }}>Services That Drive Results</h2>
             <p className="text-body" style={{ maxWidth: '600px', margin: '0 auto' }}>
@@ -79,8 +86,8 @@ export default function Home() {
             {services.map((service, i) => (
               <div key={i} className="glass-card">
                 <div className="feature-icon">{service.icon}</div>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: '700', marginBottom: '12px' }}>{service.title}</h3>
-                <p className="text-gray-400">{service.desc}</p>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: '700', marginBottom: '12px', color: 'white' }}>{service.title}</h3>
+                <p style={{ color: '#9CA3AF' }}>{service.desc}</p>
               </div>
             ))}
           </div>
@@ -88,12 +95,12 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="section">
+      <section style={{ padding: '100px 0', background: 'rgba(255,255,255,0.02)' }}>
         <div className="container-custom">
           <div className="about-grid">
             <div>
               <span className="text-small" style={{ display: 'block', marginBottom: '16px' }}>ABOUT US</span>
-              <h2 className="text-heading" style={{ marginBottom: '24px' }}>We&apos;re a Team of Creative Problem Solvers</h2>
+              <h2 className="text-heading" style={{ marginBottom: '24px', color: 'white' }}>We&apos;re a Team of Creative Problem Solvers</h2>
               <p className="text-body" style={{ marginBottom: '24px' }}>
                 Founded in 2018, we&apos;ve helped over 50 brands transform their digital presence. Our approach combines strategic thinking with bold creativity to deliver results that matter.
               </p>
@@ -112,7 +119,7 @@ export default function Home() {
               </div>
               <div className="glass-card" style={{ position: 'absolute', bottom: '-32px', left: '-32px', maxWidth: '250px' }}>
                 <div className="stat-number" style={{ fontSize: '2.5rem' }}>98%</div>
-                <div className="text-gray-400 text-sm">Client Satisfaction Rate</div>
+                <div style={{ color: '#9CA3AF', fontSize: '14px' }}>Client Satisfaction Rate</div>
               </div>
             </div>
           </div>
@@ -120,48 +127,48 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section className="section">
+      <section style={{ padding: '100px 0' }}>
         <div className="container-custom">
-          <div className="flex justify-between items-end" style={{ marginBottom: '48px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '48px' }}>
             <div>
               <span className="text-small" style={{ display: 'block', marginBottom: '16px' }}>PORTFOLIO</span>
-              <h2 className="text-heading">Featured Work</h2>
+              <h2 className="text-heading" style={{ color: 'white' }}>Featured Work</h2>
             </div>
-            <Link href="/portfolio" className="btn btn-outlined md:flex" style={{ display: 'none' }}>View All</Link>
+            <Link href="/portfolio" className="btn btn-outlined" style={{ display: 'none' }}>View All</Link>
           </div>
           <div className="project-grid">
             {projects.map((project, i) => (
               <div key={i} className="image-card">
                 <img src={project.image} alt={project.title} />
                 <div className="image-card-overlay">
-                  <span className="tag" style={{ marginBottom: '12px' }}>{project.category}</span>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: '700' }}>{project.title}</h3>
+                  <span className="tag" style={{ marginBottom: '12px', display: 'inline-block' }}>{project.category}</span>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: 'white' }}>{project.title}</h3>
                 </div>
               </div>
             ))}
           </div>
-          <Link href="/portfolio" className="btn btn-outlined" style={{ marginTop: '32px', width: '100%', display: 'block', textAlign: 'center' }}>View All Projects</Link>
+          <Link href="/portfolio" className="btn btn-outlined" style={{ marginTop: '32px', width: '100%', textAlign: 'center', display: 'block' }}>View All Projects</Link>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="section">
+      <section style={{ padding: '100px 0', background: 'rgba(255,255,255,0.02)' }}>
         <div className="container-custom">
-          <div className="text-center" style={{ marginBottom: '64px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '64px' }}>
             <span className="text-small" style={{ display: 'block', marginBottom: '16px' }}>TESTIMONIALS</span>
-            <h2 className="text-heading">What Our Clients Say</h2>
+            <h2 className="text-heading" style={{ color: 'white' }}>What Our Clients Say</h2>
           </div>
           <div className="testimonial-grid">
             {testimonials.map((testimonial, i) => (
               <div key={i} className="testimonial-card">
-                <p className="text-gray-300" style={{ marginBottom: '24px', position: 'relative', zIndex: 10 }}>{testimonial.text}</p>
-                <div className="flex items-center gap-4">
-                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'linear-gradient(135deg, #6C63FF, #FF6584)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700' }}>
+                <p style={{ color: '#D1D5DB', marginBottom: '24px', position: 'relative', zIndex: 10 }}>{testimonial.text}</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'linear-gradient(135deg, #6C63FF, #FF6584)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700', color: 'white' }}>
                     {testimonial.name[0]}
                   </div>
                   <div>
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div className="text-gray-500 text-sm">{testimonial.role}</div>
+                    <div style={{ fontWeight: '600', color: 'white' }}>{testimonial.name}</div>
+                    <div style={{ color: '#6B7280', fontSize: '14px' }}>{testimonial.role}</div>
                   </div>
                 </div>
               </div>
@@ -171,11 +178,11 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="section">
+      <section style={{ padding: '100px 0' }}>
         <div className="container-custom">
           <div className="cta-card">
             <div style={{ position: 'relative', zIndex: 10 }}>
-              <h2 className="text-heading" style={{ marginBottom: '24px' }}>Ready to Start Your Project?</h2>
+              <h2 className="text-heading" style={{ marginBottom: '24px', color: 'white' }}>Ready to Start Your Project?</h2>
               <p className="text-body" style={{ maxWidth: '500px', margin: '0 auto 32px' }}>
                 Let&apos;s collaborate and create something extraordinary together. Your brand deserves to stand out.
               </p>
