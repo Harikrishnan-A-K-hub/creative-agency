@@ -4,8 +4,8 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'Creative Agency | Elegant Design Solutions',
-  description: 'A premium creative agency specializing in web design, branding, digital marketing, and visual storytelling.',
+  title: 'Nexus Creative Agency | Digital Design & Branding',
+  description: 'A boutique creative agency specializing in brand identity, web design, and digital strategy.',
 };
 
 export default function RootLayout({
@@ -17,11 +17,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="pt-24">
+      <body>
         <Header />
         <main>{children}</main>
         <Footer />
