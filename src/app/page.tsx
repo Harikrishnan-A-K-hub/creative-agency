@@ -1,13 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 const services = [
   { icon: '🎨', title: 'Brand Identity', desc: 'Crafting unique visual identities that tell your story and connect with your audience.' },
   { icon: '💻', title: 'Web Design', desc: 'Stunning, responsive websites that convert visitors into loyal customers.' },
   { icon: '📱', title: 'Mobile Apps', desc: 'Intuitive mobile experiences that users love and keep coming back to.' },
-  { icon: '🚀', title: 'Digital Strategy', data: 'Data-driven campaigns that amplify your reach and drive measurable results.' },
+  { icon: '🚀', title: 'Digital Strategy', desc: 'Data-driven campaigns that amplify your reach and drive measurable results.' },
   { icon: '🎬', title: 'Motion Design', desc: 'Captivating animations and videos that bring your brand to life.' },
   { icon: '📸', title: 'Photography', desc: 'Professional visual content that captures the essence of your brand.' },
 ];
@@ -26,45 +25,31 @@ const testimonials = [
 ];
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   return (
     <div className="animated-bg">
       {/* Hero */}
-      <section className="min-h-screen flex items-center relative overflow-hidden">
-        <div className="container-custom py-32">
-          <div className="max-w-4xl">
-            <span className="text-small mb-6 inline-block">CREATIVE DIGITAL AGENCY</span>
-            <h1 className="text-display mb-8">
+      <section className="flex items-center relative overflow-hidden" style={{ minHeight: '100vh' }}>
+        <div className="container-custom" style={{ padding: '128px 24px' }}>
+          <div style={{ maxWidth: '800px' }}>
+            <span className="text-small" style={{ display: 'block', marginBottom: '24px' }}>CREATIVE DIGITAL AGENCY</span>
+            <h1 className="text-display" style={{ marginBottom: '32px' }}>
               We Create <span className="gradient-text">Digital</span> Experiences That Matter
             </h1>
-            <p className="text-body text-xl mb-12 max-w-2xl">
+            <p className="text-body" style={{ fontSize: '1.25rem', marginBottom: '48px', maxWidth: '600px' }}>
               A boutique agency specializing in brand identity, web design, and digital strategy. We help ambitious brands stand out in the digital landscape.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link href="/portfolio" className="btn btn-filled">
-                View Our Work
-              </Link>
-              <Link href="/contact" className="btn btn-outlined">
-                Start a Project
-              </Link>
+              <Link href="/portfolio" className="btn btn-filled">View Our Work</Link>
+              <Link href="/contact" className="btn btn-outlined">Start a Project</Link>
             </div>
           </div>
         </div>
-        
-        {/* Decorative Elements */}
-        <div className="absolute top-1/4 right-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
       </section>
 
       {/* Stats */}
-      <section className="py-20 border-t border-b border-white/5">
+      <section style={{ padding: '80px 0', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="stats-row">
             {[
               { number: '150+', label: 'Projects Completed' },
               { number: '50+', label: 'Happy Clients' },
@@ -83,19 +68,18 @@ export default function Home() {
       {/* Services */}
       <section className="section">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <span className="text-small mb-4 block">WHAT WE DO</span>
-            <h2 className="text-heading mb-6">Services That Drive Results</h2>
-            <p className="text-body max-w-2xl mx-auto">
+          <div className="text-center" style={{ marginBottom: '64px' }}>
+            <span className="text-small" style={{ display: 'block', marginBottom: '16px' }}>WHAT WE DO</span>
+            <h2 className="text-heading" style={{ marginBottom: '24px' }}>Services That Drive Results</h2>
+            <p className="text-body" style={{ maxWidth: '600px', margin: '0 auto' }}>
               We offer a comprehensive suite of digital services designed to elevate your brand and accelerate growth.
             </p>
           </div>
-          
           <div className="modern-grid">
             {services.map((service, i) => (
-              <div key={i} className="glass-card group">
-                <div className="feature-icon text-3xl">{service.icon}</div>
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+              <div key={i} className="glass-card">
+                <div className="feature-icon">{service.icon}</div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: '700', marginBottom: '12px' }}>{service.title}</h3>
                 <p className="text-gray-400">{service.desc}</p>
               </div>
             ))}
@@ -104,32 +88,30 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="section relative">
+      <section className="section">
         <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="about-grid">
             <div>
-              <span className="text-small mb-4 block">ABOUT US</span>
-              <h2 className="text-heading mb-6">We're a Team of Creative Problem Solvers</h2>
-              <p className="text-body mb-6">
-                Founded in 2018, we've helped over 50 brands transform their digital presence. Our approach combines strategic thinking with bold creativity to deliver results that matter.
+              <span className="text-small" style={{ display: 'block', marginBottom: '16px' }}>ABOUT US</span>
+              <h2 className="text-heading" style={{ marginBottom: '24px' }}>We&apos;re a Team of Creative Problem Solvers</h2>
+              <p className="text-body" style={{ marginBottom: '24px' }}>
+                Founded in 2018, we&apos;ve helped over 50 brands transform their digital presence. Our approach combines strategic thinking with bold creativity to deliver results that matter.
               </p>
-              <p className="text-body mb-8">
-                We believe great design is not just about aesthetics—it's about solving problems and creating meaningful connections between brands and people.
+              <p className="text-body" style={{ marginBottom: '32px' }}>
+                We believe great design is not just about aesthetics—it&apos;s about solving problems and creating meaningful connections between brands and people.
               </p>
-              <Link href="/about" className="btn btn-filled">
-                Learn More
-              </Link>
+              <Link href="/about" className="btn btn-filled">Learn More</Link>
             </div>
-            <div className="relative">
-              <div className="aspect-square rounded-3xl overflow-hidden">
+            <div style={{ position: 'relative' }}>
+              <div style={{ aspectRatio: '1/1', borderRadius: '24px', overflow: 'hidden' }}>
                 <img 
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=600&fit=crop" 
                   alt="Team collaboration"
-                  className="w-full h-full object-cover"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               </div>
-              <div className="absolute -bottom-8 -left-8 glass-card max-w-xs">
-                <div className="stat-number text-4xl">98%</div>
+              <div className="glass-card" style={{ position: 'absolute', bottom: '-32px', left: '-32px', maxWidth: '250px' }}>
+                <div className="stat-number" style={{ fontSize: '2.5rem' }}>98%</div>
                 <div className="text-gray-400 text-sm">Client Satisfaction Rate</div>
               </div>
             </div>
@@ -140,48 +122,41 @@ export default function Home() {
       {/* Projects */}
       <section className="section">
         <div className="container-custom">
-          <div className="flex justify-between items-end mb-12">
+          <div className="flex justify-between items-end" style={{ marginBottom: '48px' }}>
             <div>
-              <span className="text-small mb-4 block">PORTFOLIO</span>
+              <span className="text-small" style={{ display: 'block', marginBottom: '16px' }}>PORTFOLIO</span>
               <h2 className="text-heading">Featured Work</h2>
             </div>
-            <Link href="/portfolio" className="btn btn-outlined hidden md:flex">
-              View All
-            </Link>
+            <Link href="/portfolio" className="btn btn-outlined md:flex" style={{ display: 'none' }}>View All</Link>
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="project-grid">
             {projects.map((project, i) => (
               <div key={i} className="image-card">
                 <img src={project.image} alt={project.title} />
                 <div className="image-card-overlay">
-                  <span className="tag mb-3">{project.category}</span>
-                  <h3 className="text-xl font-bold">{project.title}</h3>
+                  <span className="tag" style={{ marginBottom: '12px' }}>{project.category}</span>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '700' }}>{project.title}</h3>
                 </div>
               </div>
             ))}
           </div>
-          
-          <Link href="/portfolio" className="btn btn-outlined mt-8 md:hidden w-full">
-            View All Projects
-          </Link>
+          <Link href="/portfolio" className="btn btn-outlined" style={{ marginTop: '32px', width: '100%', display: 'block', textAlign: 'center' }}>View All Projects</Link>
         </div>
       </section>
 
       {/* Testimonials */}
       <section className="section">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <span className="text-small mb-4 block">TESTIMONIALS</span>
+          <div className="text-center" style={{ marginBottom: '64px' }}>
+            <span className="text-small" style={{ display: 'block', marginBottom: '16px' }}>TESTIMONIALS</span>
             <h2 className="text-heading">What Our Clients Say</h2>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="testimonial-grid">
             {testimonials.map((testimonial, i) => (
               <div key={i} className="testimonial-card">
-                <p className="text-gray-300 mb-6 relative z-10">{testimonial.text}</p>
+                <p className="text-gray-300" style={{ marginBottom: '24px', position: 'relative', zIndex: 10 }}>{testimonial.text}</p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold">
+                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'linear-gradient(135deg, #6C63FF, #FF6584)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700' }}>
                     {testimonial.name[0]}
                   </div>
                   <div>
@@ -198,16 +173,13 @@ export default function Home() {
       {/* CTA */}
       <section className="section">
         <div className="container-custom">
-          <div className="glass-card text-center py-20 px-8 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10"></div>
-            <div className="relative z-10">
-              <h2 className="text-heading mb-6">Ready to Start Your Project?</h2>
-              <p className="text-body max-w-xl mx-auto mb-8">
-                Let's collaborate and create something extraordinary together. Your brand deserves to stand out.
+          <div className="cta-card">
+            <div style={{ position: 'relative', zIndex: 10 }}>
+              <h2 className="text-heading" style={{ marginBottom: '24px' }}>Ready to Start Your Project?</h2>
+              <p className="text-body" style={{ maxWidth: '500px', margin: '0 auto 32px' }}>
+                Let&apos;s collaborate and create something extraordinary together. Your brand deserves to stand out.
               </p>
-              <Link href="/contact" className="btn btn-filled">
-                Get in Touch
-              </Link>
+              <Link href="/contact" className="btn btn-filled">Get in Touch</Link>
             </div>
           </div>
         </div>
